@@ -10888,7 +10888,8 @@ public class MessagesController extends BaseController implements NotificationCe
         return true;
     }
     public void loadPinnedDialogs(final int folderId, long newDialogId, ArrayList<Long> order) {
-        if (!ExteraConfig.INSTANCE.getUnlimitedPinnedChats() || loadingPinnedDialogs.indexOfKey(folderId) >= 0 || getUserConfig().isPinnedDialogsLoaded(folderId)) {
+        if (!ExteraConfig.INSTANCE.getUnlimitedPinnedChats()) return;
+        if (loadingPinnedDialogs.indexOfKey(folderId) >= 0 || getUserConfig().isPinnedDialogsLoaded(folderId)) {
             return;
         }
         loadingPinnedDialogs.put(folderId, 1);
